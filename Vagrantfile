@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
       v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster01_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs01"]
     end
-    config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync_exclude: ['.git*', '*.vdi']
+    config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync__exclude: ['.git*', '*.vdi']
     #config.vm.provision :shell, path: "bootstrap.sh"
 
   end
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster02_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs02"]
     end
-    config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync_exclude: ['.git*', '*.vdi']
+    config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync__exclude: ['.git*', '*.vdi']
     #config.vm.provision :shell, path: "bootstrap.sh"
 
   end
@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
       v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster03_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs03"]
     end
-    config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync_exclude: ['.git*', '*.vdi']
+    config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync__exclude: ['.git*', '*.vdi']
     #config.vm.provision :shell, path: "bootstrap.sh"
 
   end
