@@ -14,17 +14,24 @@ Yum update -y
 # Docker #########################################################################
 echo -e "-- Installing additional packages\n"
 yum install -y yum-utils > /dev/null 2>&1
-yum install -y device-mapper-persistent-data > /dev/null 2>&1
+yum install -y centos-release-gluster > /dev/null 2>&1
 yum install -y net-tools > /dev/null 2>&1
-yum install -y lvm2 > /dev/null 2>&1
+yum install -y glusterfs-server > /dev/null 2>&1
+yum install -y corosync pacemaker pcs  > /dev/null 2>&1
 
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-echo -e "-- Installing Docker Service\n"
-yum install docker-ce -y
 
-systemctl enable docker.service
-systemctl start  docker.service
+systemctl enable glusterd.service
+systemctl start  glusterd.service
+systemctl enable pcsd.service
+systemctl start pcsd.service
+systemctl enable corosync.service
+systemctl enable pacemaker.service
+
+iptables -A INPUT -p tcp -s 192.168.0.111 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -s 192.168.0.112 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -s 192.168.0.113 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+
 # END ##########################################################################
 echo -e "-- ---------------- --"
 echo -e "-- END BOOTSTRAPING --"
