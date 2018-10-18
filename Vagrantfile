@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
       v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]      
-      v.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
       v.customize ["modifyvm", :id, "--name", "glusterfs01"]
     end
     #config.vm.provision :shell, path: "bootstrap.sh"
@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
       v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]      
-      v.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
       v.customize ["modifyvm", :id, "--name", "glusterfs02"]
     end
     #config.vm.provision :shell, path: "bootstrap.sh"
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
       v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]      
-      v.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
       v.customize ["modifyvm", :id, "--name", "glusterfs03"]
     end
     #config.vm.provision :shell, path: "bootstrap.sh"
