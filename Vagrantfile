@@ -1,4 +1,3 @@
-disk = './sdb.vdi'
 Vagrant.configure("2") do |config|
   config.vm.define "glusterfs01", primary: true do |glusterfs01|
     glusterfs01.vm.box = "centos/7"
@@ -9,8 +8,8 @@ Vagrant.configure("2") do |config|
     glusterfs01.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
-      v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]      
-      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+      v.customize ['createhd', '--filename', "gluster01_sdb.vdi", '--variant', 'Fixed', '--size', 20 * 1024]      
+      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster01_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs01"]
     end
     #config.vm.provision :shell, path: "bootstrap.sh"
@@ -26,8 +25,8 @@ Vagrant.configure("2") do |config|
     glusterfs02.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
-      v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]      
-      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+      v.customize ['createhd', '--filename', "gluster02_sdb.vdi", '--variant', 'Fixed', '--size', 20 * 1024]      
+      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster02_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs02"]
     end
     #config.vm.provision :shell, path: "bootstrap.sh"
@@ -43,8 +42,8 @@ Vagrant.configure("2") do |config|
     glusterfs03.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
-      v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]      
-      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+      v.customize ['createhd', '--filename', "gluster03_sdb.vdi", '--variant', 'Fixed', '--size', 20 * 1024]      
+      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster03_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs03"]
     end
     #config.vm.provision :shell, path: "bootstrap.sh"
