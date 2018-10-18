@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--name", "glusterfs01"]
     end
     config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync__exclude: ['.git*', '*.vdi']
-    #config.vm.provision :shell, path: "bootstrap.sh"
+    config.vm.provision :shell, path: "bootstrap.sh"
 
   end
 
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--name", "glusterfs02"]
     end
     config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync__exclude: ['.git*', '*.vdi']
-    #config.vm.provision :shell, path: "bootstrap.sh"
+    config.vm.provision :shell, path: "bootstrap.sh"
 
   end
 
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--name", "glusterfs03"]
     end
     config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync__exclude: ['.git*', '*.vdi']
-    #config.vm.provision :shell, path: "bootstrap.sh"
+    config.vm.provision :shell, path: "bootstrap.sh"
 
   end
 
