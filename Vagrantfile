@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     glusterfs01.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
-      v.customize ['createhd', '--filename', "gluster01_sdb.vdi", '--variant', 'Fixed', '--size', 20 * 1024]      
+      v.customize ['createhd', '--filename', "gluster01_sdb.vdi", '--variant', 'Fixed', '--size', 10 * 1024]      
       v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster01_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs01"]
     end
@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
     glusterfs02.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
-      v.customize ['createhd', '--filename', "gluster02_sdb.vdi", '--variant', 'Fixed', '--size', 20 * 1024]      
+      v.customize ['createhd', '--filename', "gluster02_sdb.vdi", '--variant', 'Fixed', '--size', 10 * 1024]      
       v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster02_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs02"]
     end
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
     glusterfs03.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 2048]
-      v.customize ['createhd', '--filename', "gluster03_sdb.vdi", '--variant', 'Fixed', '--size', 20 * 1024]      
+      v.customize ['createhd', '--filename', "gluster03_sdb.vdi", '--variant', 'Fixed', '--size', 10 * 1024]      
       v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster03_sdb.vdi"]
       v.customize ["modifyvm", :id, "--name", "glusterfs03"]
     end
