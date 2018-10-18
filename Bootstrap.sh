@@ -20,7 +20,6 @@ yum install -y glusterfs-server > /dev/null 2>&1
 yum install -y corosync pacemaker pcs  > /dev/null 2>&1
 
 
-
 systemctl enable glusterd.service
 systemctl start  glusterd.service
 systemctl enable pcsd.service
