@@ -1,5 +1,5 @@
 # vagrant_gluster_hosts
 
 # To Do
-* Add /dev/sdb
-* Update bootstrap.sh
+* Add /dev/sdb - done
+* Update bootstrap.sh - done
