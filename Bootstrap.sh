@@ -34,7 +34,7 @@ parted /dev/sdb --script -- mklabel gpt mkpart primary 0% 100%
 mkfs.xfs /dev/sdb1 -f
 echo "/dev/sdb1 /srv/sdb1 xfs defaults 0 0"  >> /etc/fstab
 mkdir -p /srv/sdb1/brick
-
+mount -a
 
 iptables -A INPUT -p tcp -s 192.168.0.111 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p tcp -s 192.168.0.112 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
