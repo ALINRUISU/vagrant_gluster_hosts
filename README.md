@@ -78,4 +78,8 @@ Volume Info
 mount -t glusterfs node01.srv.world:/vol_distributed /mnt 
 ```
 
-
+## Security
+```console
+   # gluster volume set testvol auth.allow 192.168.*.*
+```
+Please note that it is possible to use wildcards for the IP addresses (like 192.168.*) and that you can specify multiple IP addresses separated by comma (e.g. 192.168.0.104,192.168.0.105). 
