@@ -14,6 +14,7 @@
 * Failover
 * Failback
 
+## Server
 Adding the Server to a TSP
 ```console
     # gluster peer probe <server>
@@ -48,9 +49,33 @@ Synchronous replication (each and every file operation is sent across all the br
    
 Four Node Distributed Replicated Volume with a Two-way Mirror
 ```console
-   # gluster volume create test-volume replica 2 transport tcp glusterfs01:/srv/sdb1/brick glusterfs02:/srv/sdb1/brick glusterfs03:/srv/sdb1/brick glusterfs04:/srv/sdb1/brick
+   # gluster volume create test-volume replica 2 transport tcp \
+   glusterfs01:/srv/sdb1/brick \
+   glusterfs02:/srv/sdb1/brick \
+   glusterfs03:/srv/sdb1/brick \
+   glusterfs04:/srv/sdb1/brick 
 ```
- 
+Start Volume
 ```console
-   # gluster volume start test-volume
+   # gluster volume start <gluster volume name>
 ```
+
+Volume Status
+```console
+   # gluster volume status <glusterfs volume name>
+```
+
+Volume Info
+```console
+   # gluster volume info
+```
+
+## Client
+```console
+   # yum --enablerepo=centos-gluster40 -y install glusterfs glusterfs-fuse 
+```
+```console
+mount -t glusterfs node01.srv.world:/vol_distributed /mnt 
+```
+
+
