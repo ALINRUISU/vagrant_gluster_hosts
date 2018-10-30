@@ -53,4 +53,23 @@ Vagrant.configure("2") do |config|
 
   end
 
+  config.vm.define "glusterfs04" do |glusterfs04|
+    glusterfs04.vm.box = "centos/7"
+    glusterfs04.vm.hostname = 'glusterfs04'
+
+    glusterfs04.vm.network :public_network, ip: "192.168.0.114"
+
+    glusterfs04.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ['createhd', '--filename', "gluster04_sdb.vdi", '--variant', 'Fixed', '--size', 10 * 1024]      
+      v.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', "gluster04_sdb.vdi"]
+      v.customize ["modifyvm", :id, "--name", "glusterfs04"]
+    end
+    config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync_auto: true, rsync__exclude: ['.git*', '*.vdi']
+    config.vm.provision :shell, path: "bootstrap.sh"
+
+  end
+
+
 end
