@@ -70,6 +70,28 @@ Volume Info
    # gluster volume info
 ```
 
+
+### Scaling 
+
+Adding Gluster Volume 
+```console
+   # gluster peer probe <new gluster server name>
+```
+
+GluserFS add brick
+```console
+   # gluster volume add-brick examplevolume 192.168.2.105:/export
+```
+
+Gluster rebalance Volume
+```console
+   # gluster volume rebalance examplevolume start
+```
+Gluster rebalance Volume
+```console
+   # gluster volume rebalance examplevolume status
+```
+
 ## Client
 ```console
    # yum --enablerepo=centos-gluster40 -y install glusterfs glusterfs-fuse 
