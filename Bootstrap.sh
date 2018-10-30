@@ -42,12 +42,14 @@ mount -a
 iptables -A INPUT -p tcp -s 192.168.0.111 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p tcp -s 192.168.0.112 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p tcp -s 192.168.0.113 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -s 192.168.0.114 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
 # add hostfile ##########################################################################
 cat <<EOT >> /etc/hosts
 192.168.0.111   glusterfs01
 192.168.0.112   glusterfs02
 192.168.0.113   glusterfs03
+192.168.0.114   glusterfs04
 EOT
 
 # END ##########################################################################
