@@ -51,4 +51,6 @@ Four Node Distributed Replicated Volume with a Two-way Mirror
    # gluster volume create test-volume replica 2 transport tcp glusterfs01:/srv/sdb1/brick glusterfs02:/srv/sdb1/brick glusterfs03:/srv/sdb1/brick glusterfs04:/srv/sdb1/brick
 ```
  
-
+```console
+   # gluster volume start test-volume
+```
