@@ -28,6 +28,16 @@ systemctl start pcsd.service
 systemctl enable corosync.service
 systemctl enable pacemaker.service
 
+# Adding users ##########################################################################
+echo -e "-- Adding users"
+# NEVER EVER Do this in production (This is here for the ease of automation + administration)
+echo "changeme123" | passwd hacluster --stdin
+
+adduser rsu
+echo "changeme123" | passwd rsu --stdin
+cat <<EOT >> /etc/sudoers.d/99-admin
+rsu ALL=(ALL) NOPASSWD:ALL
+EOT
 
 # partition config ##########################################################################
 echo -e "-- Update storage size"
